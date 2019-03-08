@@ -23,7 +23,7 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-export default reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch(action.type) {
     default:
       return state
