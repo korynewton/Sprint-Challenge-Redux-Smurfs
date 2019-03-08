@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 const Smurfs = (props) => {
   return (
     <div>
-      {props.smurfs.map( (smurf, index) => <h1 key={index}>{smurf.name}</h1>  
+      {props.smurfs.map( smurf => <h1 key={smurf.id}>{smurf.name}</h1>  
       )}
     </div>
   )

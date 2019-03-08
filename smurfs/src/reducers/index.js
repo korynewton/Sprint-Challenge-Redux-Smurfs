@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING_SMURFS, ERROR_FETCHING, FETCH_SUCCESSFUL } from '../actions'
+import { FETCHING_SMURFS, ERROR_FETCHING, FETCH_SUCCESSFUL, ADDING_SMURF, ADD_SUCCESSFUL, ERROR_ADDING } from '../actions'
 
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -10,7 +10,8 @@ const initialState = {
    smurfs: [],
    fetchingSmurfs: false,
    fetchSuccesful: false,
-   updatingSmurf: false,
+   addingSmurf: false,
+   addSuccessful: false,
    deletingSmurf: false,
    error: null
  }
@@ -41,6 +42,23 @@ export const reducer = (state = initialState, action) => {
         return {
           ...state,
           fetchingSmurfs:false,
+          error: action.payload
+        }
+      case ADDING_SMURF:
+        return {
+          ...state,
+          addingSmurf: true,
+        }
+      case ADD_SUCCESSFUL: 
+        return {
+          ...state,
+          addingSmurf: false,
+          smurfs: action.payload
+        }
+      case ERROR_ADDING: 
+        return {
+          ...state,
+          addingSmurf: false,
           error: action.payload
         }
     default:
