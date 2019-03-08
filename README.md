@@ -23,8 +23,18 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+actions: Objects passed to reducers to control the flow of state.
+reducers: Take in actions and alter state in response to the action object recieved.
+store: Handle application state as a whole. The store is known as the 'single source of truth' because its one responsibility is to handle changes to state. Components that are 'plugged in' to this 'single source of truth' will receive their updated state in real time.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+The difference between application state and component state is that application state handles state for the entire state, while component state only receives the state that it *needs* to know about. A component may even have its own internal state for UI such as a form or search bar.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+redux thunk is a middleware needed to deal with asynchronous opperations such as requesting data from an API. The default nature of redux is synchronous, however, data requests do not happen instantly. By using redux-thunk we can make requests and upstate state appropriately while waiting for a response without breaking the program. This changes our action creators because now everything they return is passed through the thunk 'middleman'. If thunk recieves an action it passes it to the reducer as normal however, if it recieves a function it will pass that to the dispatch function. This makes it possible to control our finite state machine by dispatching the correct action based on what is happening in real time(i.e. fetching, logging in vs data fetched and logged in)
 
 ## Project Set Up
 
